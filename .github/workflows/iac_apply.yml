@@ -19,11 +19,11 @@ jobs:
         terraform_version: 1.5.7
 
     - name: Initialize Terraform
-      run: terraform init
+      run: terraform -chdir=dev init
 
     - name: Apply Terraform Changes
       run: |
-        terraform plan -out=tfplan
+        terraform plan -chdir=dev  -out=tfplan
         terraform apply -auto-approve tfplan
       env:
         TF_VAR_1: ${{ secrets.TF_VAR_1 }}  # Set environment variables for your secrets
