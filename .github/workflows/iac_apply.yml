@@ -23,7 +23,7 @@ jobs:
 
     - name: Apply Terraform Changes
       run: |
-        terraform plan -chdir=dev  -out=tfplan
+        terraform -chdir=dev plan -out=tfplan
         terraform apply -auto-approve tfplan
       env:
         TF_VAR_1: ${{ secrets.TF_VAR_1 }}  # Set environment variables for your secrets
